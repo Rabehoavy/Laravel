@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Bonjour
+                <h1>Bonjour {{ $prenom }}</h1>
                 </div>
 
                 <div class="links">
