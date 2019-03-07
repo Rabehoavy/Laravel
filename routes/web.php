@@ -26,3 +26,7 @@ Route::get('/bonjour/{nom}', function () {
         'prenom' => $nom,
     ]);
 });
+
+Route::get('/inscription', function () {
+    return view('inscription');
+});
