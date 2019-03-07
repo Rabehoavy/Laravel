@@ -2,6 +2,8 @@
 
 @section('contenu')
 <form action="/inscription" method="post">
+{{ csrf_field() }}
+
     <div>
         <label for="mail">E-mail :</label>
         <input type="email" id="mail" name="user_mail" placeholder="Email">
