@@ -19,6 +19,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/bonjour/{prenom}', function () {
-    return 'Bonjour ' . request('prenom');
+Route::get('/bonjour/{nom}', function () {
+    $nom = request('nom');
+
+    return view('bonjour', [
+        'prenom' => $nom,
+    ]);
 });
