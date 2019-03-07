@@ -30,3 +30,8 @@ Route::get('/bonjour/{nom}', function () {
 Route::get('/inscription', function () {
     return view('inscription');
 });
+
+Route::post('/inscription', function () {
+    return 'Votre email est ' . request('email');
+    return 'Formulaire reçu';
+});
