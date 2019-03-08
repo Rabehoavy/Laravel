@@ -32,9 +32,13 @@ Route::get('/inscription', function () {
 });
 
 Route::post('/inscription', function () {
-    $utilisateur = new App\Utilisateur;
+    /*$utilisateur = new App\Utilisateur;
     $utilisateur->email = request('user_mail');
-    $utilisateur->mot_de_passe = bcrypt(request('user_password'));
+    $utilisateur->mot_de_passe = bcrypt(request('user_password'));*/
+    $utilisateur = App\Utilisateur::create([
+        'email' => request('email'),
+        'mot_de_passe' => bcrypt(request('password')),
+    ]);
 
     $utilisateur->save();
 
