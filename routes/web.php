@@ -48,7 +48,7 @@ Route::post('/inscription', function () {
 
     $utilisateur->save();
 
-    return 'Votre email est ' . request('user_mail');
+    return 'Votre email est ' . request('email');
     return 'Formulaire reçu';
 });
 
