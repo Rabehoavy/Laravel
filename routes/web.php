@@ -54,10 +54,4 @@ Route::post('/inscription', function () {
     return 'Formulaire reçu';
 });
 
-Route::get('/utilisateurs', function () {
-    $utilisateurs = App\Utilisateur::all();
-
-    return view('utilisateurs', [
-        'utilisateurs' => $utilisateurs
-    ]);
-});
+Route::get('/utilisateurs', 'UtilisateursController@liste');
