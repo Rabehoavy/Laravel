@@ -27,31 +27,7 @@ Route::get('/bonjour/{nom}', function () {
     ]);
 });
 
-Route::get('/inscription', function () {
-    return view('inscription');
-});
-
-Route::post('/inscription', function () {
-    request()->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required', 'confirmed', 'min:8'],
-        'password_confirmation' => ['required'],
-    ], [
-        'password.min' => 'Pour des raisons de sécurité, votre mot de passe doit faire :min caractères.'
-    ]);
-
-    /*$utilisateur = new App\Utilisateur;
-    $utilisateur->email = request('user_mail');
-    $utilisateur->mot_de_passe = bcrypt(request('user_password'));*/
-    $utilisateur = App\Utilisateur::create([
-        'email' => request('email'),
-        'mot_de_passe' => bcrypt(request('password')),
-    ]);
-
-    $utilisateur->save();
-
-    return 'Votre email est ' . request('email');
-    return 'Formulaire reçu';
-});
+Route::get('/inscription', 'InscriptionController@formulaire');
+Route::post('/inscription', 'InscriptionController@traitement');
 
 Route::get('/utilisateurs', 'UtilisateursController@liste');
