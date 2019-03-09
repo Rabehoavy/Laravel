@@ -16,4 +16,11 @@ class CompteController extends Controller
 
     return view('mon-compte');
     }
+
+    public function deconnexion()
+{
+    auth()->logout();
+
+    return redirect('/');
+}
 }
