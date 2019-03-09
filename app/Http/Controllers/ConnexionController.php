@@ -18,13 +18,19 @@ class ConnexionController extends Controller
         'password' => ['required'],
     ]);
 
-    auth()->attempt([
+    $resultat = auth()->attempt([
         'email' => request('email'),
         'password' => request('password'),
     ]);
 
     // À faire : vérification que l'email et le mot de passe sont corrects.
 
-    return 'Traitement formulaire connexion';
+    if ($resultat) {
+        return redirect('/mon-compte');
+    }
+
+    return back()->withInput()->withErrors([
+        'email' => 'Vos identifiants sont incorrects.',
+    ]);
     }
 }
