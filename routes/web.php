@@ -33,4 +33,4 @@ Route::post('/connexion', 'ConnexionController@traitement');
 
 Route::get('/utilisateurs', 'UtilisateursController@liste');
 
-Route::view('/mon-compte', 'mon-compte');
+Route::get('/mon-compte', 'CompteController@accueil');
