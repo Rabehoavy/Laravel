@@ -26,6 +26,8 @@ class ConnexionController extends Controller
     // À faire : vérification que l'email et le mot de passe sont corrects.
 
     if ($resultat) {
+        flash("Vous êtes maintenant connecté.")->success();
+    
         return redirect('/mon-compte');
     }
 
