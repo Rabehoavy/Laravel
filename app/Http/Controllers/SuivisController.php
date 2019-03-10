@@ -16,4 +16,15 @@ class SuivisController extends Controller
         flash("Vous suivez maintenant {$utilisateurQuiVaEtreSuivi->email}.")->success();
         return back();
     }
+
+    public function enlever()
+    {
+        $utilisateurQuiSuit = auth()->user();
+        $utilisateurQuiEstSuivi = Utilisateur::where('email', request('email'))->firstOrFail();
+
+        $utilisateurQuiSuit->suivis()->detach($utilisateurQuiEstSuivi);
+
+        flash("Vous ne suivez plus {$utilisateurQuiEstSuivi->email}.")->success();
+        return back();
+    }
 }

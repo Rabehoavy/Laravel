@@ -9,10 +9,20 @@
                 </div>
 
                 @auth
-                <form class="level-item" action="/{{ $utilisateur->email}}/suivis" method="post">
-                    {{ csrf_field() }}
-                    <button class="button is-link" type="submit">Suivre</button>
-                </form>
+                    <form class="level-item" action="/{{ $utilisateur->email }}/suivis" method="post">
+                        {{ csrf_field() }}
+                        @if (auth()->user()->suit($utilisateur))
+                            {{ method_field('delete') }}
+                        @endif
+                        
+                        <button class="button is-link" type="submit">
+                            @if (auth()->user()->suit($utilisateur))
+                                Ne plus suivre
+                            @else
+                                Suivre
+                            @endif
+                        </button>
+                    </form>
                 @endauth
             </div>
         </h1>
