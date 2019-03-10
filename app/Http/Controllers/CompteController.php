@@ -8,13 +8,7 @@ class CompteController extends Controller
 {
     public function accueil()
     {
-        if (auth()->guest()) {
-            flash("Vous devez être connecté pour voir cette page.")->error();
-        
-            return redirect('/connexion');
-        }
-
-    return view('mon-compte');
+        return view('mon-compte');
     }
 
     public function deconnexion()
@@ -28,12 +22,6 @@ class CompteController extends Controller
 
     public function modificationMotDePasse()
     {
-        if (auth()->guest()) {
-            flash("Vous devez être connecté pour voir cette page.")->error();
-
-            return redirect('/connexion');
-        }
-
         request()->validate([
             'password' => ['required', 'confirmed', 'min:8'],
             'password_confirmation' => ['required'],
