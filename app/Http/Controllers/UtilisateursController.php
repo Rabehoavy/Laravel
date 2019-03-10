@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Utilisateur;
+use App\Message;
 
 class UtilisateursController extends Controller
 {
@@ -19,10 +20,12 @@ class UtilisateursController extends Controller
     {
         $email = request('email');
 
-        $utilisateur = Utilisateur::where('email', $email)->first();
+        $utilisateur = Utilisateur::where('email', $email)->firstOrFail();
+        $messages = Message::where('utilisateur_id', $utilisateur->id)->latest()->get();
 
         return view('utilisateur', [
             'utilisateur' => $utilisateur,
+            'messages' => $messages,
         ]);
     }
 }
