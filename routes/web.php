@@ -37,4 +37,6 @@ Route::get('/mon-compte', 'CompteController@accueil');
 Route::get('/deconnexion', 'CompteController@deconnexion');
 Route::post('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');
 
+Route::post('/messages', 'MessagesController@nouveau');
+
 Route::get('/{email}', 'UtilisateursController@voir');
