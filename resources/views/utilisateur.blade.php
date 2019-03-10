@@ -27,7 +27,7 @@
 
         @endif
 
-        @foreach ($messages as $message)
+        @foreach ($utilisateur->messages as $message)
             <hr>
             <p>
                 <strong>{{ $message->created_at }}</strong><br>

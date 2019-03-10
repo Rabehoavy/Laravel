@@ -21,11 +21,10 @@ class UtilisateursController extends Controller
         $email = request('email');
 
         $utilisateur = Utilisateur::where('email', $email)->firstOrFail();
-        $messages = Message::where('utilisateur_id', $utilisateur->id)->latest()->get();
 
         return view('utilisateur', [
             'utilisateur' => $utilisateur,
-            'messages' => $messages,
+
         ]);
     }
 }

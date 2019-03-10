@@ -12,6 +12,11 @@ class Utilisateur extends Model implements Authenticatable
 
     protected $fillable = ['email', 'mot_de_passe'];
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class)->latest();
+    }
+
     /**
      * Get the password for the user.
      *

@@ -21,8 +21,11 @@ class MessagesController extends Controller
         ]);
 
         // Création d'un message dans la base de données avec Eloquent
-        Message::create([
+        /*Message::create([
             'utilisateur_id' => auth()->id(),
+            'contenu' => request('message'),
+        ]);*/
+        auth()->user()->messages()->create([
             'contenu' => request('message'),
         ]);
 
