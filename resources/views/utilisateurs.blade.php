@@ -1,11 +1,16 @@
 @extends('layout')
 
 @section('contenu')
-    <h1>Les utilisateurs</h1>
+    <div class="section">
+        <h1 class="title is-1">Bienvenue !</h1>
 
-    <ul>
-        @foreach($utilisateurs as $utilisateur)
-            <li>{{ $utilisateur->email }}</li>
-        @endforeach
-    </ul>
+        <ul>
+            @foreach($utilisateurs as $utilisateur)
+                <li>
+                    <a href="/{{ $utilisateur->email }}">{{ $utilisateur->email }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
 @endsection
