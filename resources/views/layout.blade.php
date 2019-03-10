@@ -28,35 +28,30 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-            <a href="/utilisateurs" class="navbar-item {{ request()->is('utilisateurs') ? 'is-active' : ''}}">
-                Accueil
-            </a>
+                <div class="buttons">
+                    @include('partials.navbar-item', ['lien' => 'utilisateurs', 'texte' => 'Accueil'])
+                    @auth
+                        @include('partials.navbar-item', ['lien' => auth()->user()->email, 'texte' => auth()->user()->email])
+                    @endauth
+                </div>
             </div>
 
             <div class="navbar-end">
-                @if(auth()->check())
+                @auth
                 <div class="navbar-item">
                     <div class="buttons">
-                    <a href="/mon-compte" class="button is-primary {{ request()->is('mon-compte') ? 'is-active' : ''}}">
-                        <strong>Mon compte</strong>
-                    </a>
-                    <a href="/deconnexion" class="button is-light">
-                        Déconnexion
-                    </a>
+                        @include('partials.navbar-item', ['lien' => 'mon-compte', 'texte' => 'Mon compte'])
+                        @include('partials.navbar-item', ['lien' => 'deconnexion', 'texte' => 'Déconnexion'])
                     </div>
                 </div>
                 @else
                 <div class="navbar-item">
                     <div class="buttons">
-                    <a href="/inscription" class="button is-primary {{ request()->is('inscription') ? 'is-active' : ''}}">
-                        <strong>Inscription</strong>
-                    </a>
-                    <a href="/connexion" class="button is-light {{ request()->is('connexion') ? 'is-active' : ''}}">
-                        Connexion
-                    </a>
+                        @include('partials.navbar-item', ['lien' => 'inscription', 'texte' => 'Inscription'])
+                        @include('partials.navbar-item', ['lien' => 'connexion', 'texte' => 'Connexion'])
                     </div>
                 </div>
-                @endif
+                @endauth
             </div>
         </div>
         </nav>
