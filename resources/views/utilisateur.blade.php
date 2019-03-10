@@ -2,7 +2,20 @@
 
 @section('contenu')
     <div class="section">
-        <h1 class="title is-1">{{ $utilisateur->email }}</h1>
+        <h1 class="title is-1 level">
+            <div class="level-left">
+                <div class="level-item">
+                    {{ $utilisateur->email }}
+                </div>
+
+                @auth
+                <form class="level-item" action="/{{ $utilisateur->email}}/suivis" method="post">
+                    {{ csrf_field() }}
+                    <button class="button is-link" type="submit">Suivre</button>
+                </form>
+                @endauth
+            </div>
+        </h1>
 
         @if (auth()->check() AND auth()->user()->id === $utilisateur->id)
         <form action="/messages" method="post">

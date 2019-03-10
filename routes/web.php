@@ -41,6 +41,8 @@ Route::group([
     Route::post('/modification-mot-de-passe', 'CompteController@modificationMotDePasse');
 
     Route::post('/messages', 'MessagesController@nouveau');
+
+    Route::post('/{email}/suivis', 'SuivisController@nouveau');
 });
 
 Route::get('/{email}', 'UtilisateursController@voir');
